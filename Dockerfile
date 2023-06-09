@@ -11,6 +11,8 @@ ENV APP_HOME /app
 WORKDIR $APP_HOME
 COPY . ./
 
+ENV PORT 1234
+
 # Install production dependencies.
 RUN pip install --no-cache-dir -r requirements.txt
 
@@ -22,4 +24,4 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 # CMD exec gunicorn --bind :$PORT --workers 1 --threads 8 --timeout 0 main:app
 
-CMD ["uvicorn", "--host", "0.0.0.0", "--port", "8080", "main:app"]
+CMD ["uvicorn", "--host", "0.0.0.0", "--port", ${PORT}, "main:app"]
