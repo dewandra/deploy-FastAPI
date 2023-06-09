@@ -16,7 +16,7 @@ COPY requirements.txt requirements.txt
 # Install production dependencies.
 RUN pip install -r requirements.txt
 
-EXPOSE 8080
+EXPOSE 8000
 
 # Allow statements and log messages to immediately appear in the logs
 ENV PYTHONUNBUFFERED==1
@@ -29,4 +29,4 @@ ENV PYTHONUNBUFFERED==1
 
 # CMD exec gunicorn --bind :$PORT --workers 1 --threads 8 --timeout 0 main:app
 
-CMD ["uvicorn", "--host", "0.0.0.0", "--port", "8080", "main:app"]
+CMD ["uvicorn", "--host", "0.0.0.0", "--port", "8000", "main:app"]
